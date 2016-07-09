@@ -3,6 +3,6 @@
 
 void initIR(unsigned int n);
 void checkIR();
-void onReceiveIR(unsigned int makerCode, unsigned int dataCode);
+void onReceiveIR(unsigned int makerCode, unsigned int dataCode, bool isRepeat);
 
 #endif

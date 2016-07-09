@@ -54,8 +54,9 @@ void checkIR() {
           state = 2;
         } else {
           if (countHigh >= 20 && millis() - lastReceptionTime < 150) {
+            // 150ms以内のリピート信号のみ入力として処理
             lastReceptionTime = millis();
-            onReceiveIR(makerCode, dataCode);
+            onReceiveIR(makerCode, dataCode, true);
           }
           countHigh = 0;
           state = 0;
@@ -96,7 +97,7 @@ void checkIR() {
             dataCode = (dataCode << 1) | logic;
             if (++countBit >= 16) {
               lastReceptionTime = millis();
-              onReceiveIR(makerCode, dataCode);
+              onReceiveIR(makerCode, dataCode, false);
               countHigh = 0;
               countLow = 0;
               state = 0;
